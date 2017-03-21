@@ -15,7 +15,7 @@ class App extends React.Component {
           <h2>Bem-Vindo ao React</h2>
         </div>
         <p className="App-intro">
-         <h1>Primeiro Projeto React</h1>
+         <h1>{txt}</h1>
 		 <Button texto='MEU TEXTO' />
         </p>
       </div>
@@ -28,5 +28,8 @@ App.propTypes = {
     cat: React.PropTypes.number.isRequired
 }
 
+App.defaultProps = {
+    txt: "Esse é o texto padrão, quando o 'property' txt não é informado."
+}
 
 export default App;
