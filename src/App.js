@@ -4,9 +4,20 @@ import './App.css';
 import Button from './button-App.js';
 
 class App extends React.Component {
-	
+
+  constructor(){
+    super();
+    this.state = {
+      txt: 'Esse é o texto "state"',
+      cat: 0
+    }
+  }
+
+  update( e ){
+    this.setState({txt: e.target.value})
+  }
+
   render() {
-    let txt = this.props.txt
 
     return (
       <div className="App">
@@ -14,22 +25,15 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Bem-Vindo ao React</h2>
         </div>
-        <p className="App-intro">
-         <h1>{txt}</h1>
-		 <Button texto='MEU TEXTO' />
-        </p>
+        <div className="App-intro">
+          <input type="text" onChange={this.update.bind(this)}></input>
+          <h1>{this.state.txt} - {this.state.cat}</h1>
+          <Button texto='MEU TEXTO'></Button>
+        </div>
       </div>
     );
   }
 }
 
-App.propTypes = {
-    txt: React.PropTypes.string,
-    cat: React.PropTypes.number.isRequired
-}
-
-App.defaultProps = {
-    txt: "Esse é o texto padrão, quando o 'property' txt não é informado."
-}
 
 export default App;
